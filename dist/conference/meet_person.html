@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>预订会议室</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm-6a514404f6.css">
+    <link rel="stylesheet" href="../css/common-800305be51.css">
+    <style type="text/css">
+    .bar-header-secondary {
+        top: 0;
+    }
+
+    .searchbar {
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.1);
+        height: auto;
+    }
+
+    nav.bar .button {
+        font-weight: bold;
+        top: 0;
+        border-radius: 0;
+    }
+
+    .bar {
+        height: auto;
+    }
+
+    .m-title {
+        background: #eee;
+        height: 2.2rem;
+        line-height: 2.2rem;
+        padding-left: 0.5rem;
+        font-weight: bold;
+    }
+
+    .tip {
+        text-align: center;
+        height: 2rem;
+        line-height: 2rem;
+    }
+    .search-input input{
+      border:none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="bar bar-tab">
+            <a id="personAdd" href="javascript:;" class="external button button-big button-fill">完成</a>
+        </nav>
+        <!---->
+        <div class="content native-scroll">
+            <!---->
+            <!-- <div class="searchbar row">
+                <div class="search-input col-80">
+                    <label class="icon icon-search" for="search"></label>
+                    <input type="search" id="search" placeholder="搜索名字或部门...">
+                </div>
+                <a id="searchBtn" href="javascript:;" class="button button-fill button-primary col-20">搜索</a>
+            </div> -->
+            <div class="searchbar">
+                <div class="searchbar-flex">
+                    <div class="search-input">
+                        <label class="icon icon-search" for="search"></label>
+                        <input type="search" id='search' placeholder='搜索名字或部门...' autocomplete="off" />
+                        <span class="hairline" id="hairline"></span>
+                    </div>
+                    <div class="search-btn"><a href="javascript:;" class="button" id="searchBtn">搜索</a></div>
+                </div>
+            </div>
+            <!--可删除的添加好的人员列表-->
+            <div id="addedPer">
+                <div class="m-title">已添加人员(<span id="addedCount">0</span>)</div>
+                <div class="list-block" style="margin:0">
+                    <ul id="addedPerUl">
+                        <!--  <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">王五(产研基地)</div>
+                  <div class="item-after"><a class="js-perdel button button-fill button-danger">删除</a></div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">王五(产研基地)</div>
+                  <div class="item-after"><a class="js-perdel button button-fill button-danger">删除</a></div>
+                </div>
+              </li>-->
+                    </ul>
+                </div>
+            </div>
+            <!---->
+            <div class="m-title">搜索结果</div>
+            <div class="list-block" style="margin-top:0">
+                <ul id="searchList">
+                    <!-- <li class="item-content">
+              <div class="item-inner">
+                <div class="item-title">王五2(产研基地)</div>
+                <div class="item-after"><a class="js-peradd button button-fill disabled">已经添加</a></div>
+              </div>
+            </li>-->
+                </ul>
+            </div>
+            <!---->
+        </div>
+    </div>
+    <script type='text/javascript' src='../js/zepto-5e568556e9.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../js/sm-d9705c9e06.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../js/common-6c085acd60.js' charset='utf-8'></script>
+    <script src="../js/template-404a5647dd.js" type="text/javascript" charset="utf-8"></script>
+    <script type='text/javascript' src='js/meet_person-c4fdf1b777.js' charset='utf-8'></script>
+    sc
+    <script id="addedPerTpl" type="text/html">
+        <div class="m-title">已添加人员(<span id="addedCount">{{count}}</span>)</div>
+        <div class="list-block" style="margin:0">
+            <ul>
+                {{each items as value i}}
+                <li class="item-content" data-perid={{value.id}} data-pername={{value.personName}}>
+                    <div class="item-inner">
+                        <div class="item-title">{{value.personName}}({{value.orgName}})</div>
+                        <div class="item-after"><a class="js-perdel button button-fill button-danger">删除</a></div>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
+    <script id="searchListTpl" type="text/html">
+        {{each items as value i}}
+        <li class="item-content" data-perid={{value.id}} data-pername={{value.personName}} data-orgname={{value.orgName}}>
+            <div class="item-inner">
+                <div class="item-title">{{value.personName}}({{value.orgName}})</div>
+                <div class="item-after"> {{if value.isAdded}} <a href="javascript:;" class="js-peradd button button-fill">确认添加</a>{{else}}<a class="js-peradd button button-fill disabled">已经添加</a>{{/if}}</div>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+</body>
+
+</html>

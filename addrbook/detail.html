@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通讯录</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/addrbook.css">
+</head>
+
+<body>
+    <div class="page page-current moa-addrlist">
+        <div class="content" id="addrlist">
+            <!-- <div class="feature">
+                <img src="../images/photo.png" alt="photo">
+            </div>
+            <div class="list-block">
+                <ul>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">姓名：李木子</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">部门：产品中心－产品经理</div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">手机：13611111111</div>
+                            <div class="item-after item-right">
+                                <div class="inner">
+                                    <span class="icon icon-phone"></span>
+                                    <div class="text">打电话</div>
+                                </div>
+                                <div class="inner">
+                                    <span class="icon icon-message"></span>
+                                    <div class="text">发短信</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">座机：0755-87634512</div>
+                            <div class="item-after item-right">
+                                <div class="inner">
+                                    <span class="icon icon-phone"></span>
+                                    <div class="text">打电话</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">微信：13611111111</div>
+                            <div class="item-after item-right">
+                                <div class="inner">
+                                    <span class="icon iconfont icon-weixin"></span>
+                                    <div class="text">加微信</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">邮箱：13611111111@qfang.com</div>
+                        </div>
+                    </li>
+                </ul>
+            </div> -->
+            <script id='searchResult' type="text/html">
+                <div class="feature">
+                    <img src="{{photoUrl}}" alt="photo">
+                </div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名：{{personName}}</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">部门：{{positionType}}-{{orgName}}</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机：{{mobile}}</div>
+                                <div class="item-after item-right">
+                                    <div class="inner">
+                                        <a class="external opt-outer" href='tel:{{mobile}}'>
+                                            <span class="icon icon-phone"></span>
+                                            <div class="text">打电话</div>
+                                        </a>
+                                    </div>
+                                    <div class="inner">
+                                        <a class="external opt-outer" href='sms:{{mobile}}'>
+                                            <span class="icon icon-message"></span>
+                                            <div class="text">发短信</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{if cell}}
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">座机：{{cell}}</div>
+                                <div class="item-after item-right">
+                                    <div class="inner">
+                                        <a class="external opt-outer" href='tel:{{cell}}'>
+                                            <span class="icon icon-phone"></span>
+                                            <div class="text">打电话</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{if wexin}}
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">微信：{{wexin}}</div>
+                                // <div class="item-after item-right">
+                                //     <div class="inner">
+                                //         <span class="icon iconfont icon-weixin"></span>
+                                //         <div class="text">加微信</div>
+                                //     </div>
+                                // </div>
+                            </div>
+                        </li>
+                        {{/if}}
+                        {{if email}}
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">邮箱：{{email}}</div>
+                            </div>
+                        </li>
+                        {{/if}}
+                    </ul>
+                </div>
+            </script>
+        </div>
+    </div>
+    <script type='text/javascript' src='../js/zepto.js'></script>
+    <script type='text/javascript' src='../js/sm.js'></script>
+    <script type='text/javascript' src='../js/template.js'></script>
+    <script type='text/javascript' src='../js/common.js'></script>
+    <script type='text/javascript' src='js/addrbook.js'></script>
+    <script>
+    $(function() {
+        addrbook.detail();
+    })
+    </script>
+</body>
+
+</html>

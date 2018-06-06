@@ -1,0 +1,114 @@
+/*通讯录*/
+
+.moa-addrlist,
+.moa-addrsearch {
+    background-color: #fff;
+}
+
+.moa-addrlist .feature {
+    position: relative;
+    height: 40%;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #03A9F4;
+}
+
+.moa-addrlist .feature img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -2.5rem;
+    margin-left: -2.5rem;
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #B3E5FC;
+    border-radius: 50%;
+}
+
+.moa-addrlist .list-block {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.moa-addrlist .list-block ul:before,
+.moa-addrsearch .list-block ul:before {
+    background-color: transparent;
+}
+
+
+.moa-addrlist .item-right {
+    max-height: none;
+    text-align: center;
+    color: #03A9F4;
+}
+
+.moa-addrlist .item-right .inner {
+    margin-left: 1.5rem;
+}
+
+.moa-addrlist .item-right .opt-outer {
+    display: block;
+}
+
+.moa-addrlist .item-right .icon {
+    font-size: 1rem;
+}
+
+.moa-addrlist .item-right .text {
+    font-size: 0.6rem;
+}
+
+
+/*搜索*/
+
+.moa-addrsearch-list {
+    margin-top: 2.5rem;
+}
+
+.moa-addrsearch-list .item-photo,
+.moa-addrsearch-list .item-info {
+    float: left;
+}
+
+.moa-addrsearch-list .item-photo img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid #e7e7e7;
+}
+
+.moa-addrsearch-list .item-info .post {
+    color: #999;
+    font-size: 0.6rem;
+}
+
+.moa-addrsearch-list .item-after .icon-phone {
+    font-size: 1.5rem;
+}
+
+.moa-addrsearch-list .btn-phone {
+    display: block;
+    width: 2.3rem;
+    height: 2.3rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #0894ec;
+}
+
+.moa-addrsearch-list .item-after.phone {
+    max-height: 2.5rem;
+}
+
+.moa-addrsearch-list .item-content:active {
+    background-color: #f3f3f3;
+}
+
+.searchNoresult {
+    display: none;
+    text-align: center;
+    margin-top: 5rem;
+    color: #999;
+    font-size: 0.7rem;
+}
+

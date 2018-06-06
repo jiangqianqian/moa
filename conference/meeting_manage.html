@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>会议管理</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+      .list-block {
+        margin-top: 0;
+        font-size: 0.8rem;
+      }
+
+      .list-block .item-title.label {
+        width: 20%;
+      }
+
+      .list-block .item-input,
+      .list-block .item-input input,
+      .list-block .item-input input {
+        text-align: right;
+        color: #3d4145;
+        font-size: 0.7rem;
+      }
+      /*.list-block .item-input a{
+         color:#3d4145;
+      }*/
+
+      @media only screen and (min-width: 100px) and (max-width: 360px) {
+        .list-block .item-title.label {
+          width: 24%;
+        }
+        .list-block .item-input,
+        .list-block .item-input input,
+        .list-block .item-input input {
+          text-align: right;
+          color: #3d4145;
+          font-size: 0.65rem;
+        }
+      }
+
+      nav.bar .button {
+        font-weight: bold;
+        top: 0;
+        border-radius: 0;
+      }
+
+      .bar {
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="page">
+      <nav class="bar bar-tab">
+        <a id="bookBtn" href="javascript:;" class="external button button-big button-fill">确定</a>
+      </nav>
+      <!---->
+      <div class="content native-scroll">
+        <!---->
+        <div class="list-block">
+          <ul>
+
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">会议日期</div>
+                  <div class="item-input" style="font-size: 0.8rem;">
+                    <span id="useDate">周一(4.16)</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">会议室</div>
+                  <div class="item-input" style="font-size: 0.8rem;" >
+                    <span id="conference">新房小会议室(二)</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">会议时间</div>
+                  <div class="item-input">
+                    <span id="time">14：00-16：00</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">与会人员</div>
+                  <div class="item-input">
+                    <a id="perLink" href="meet_person.html">请添加与会人员</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label">会议主题</div>
+                  <div class="item-input">
+                    <input id="meetTitle" type="text" placeholder="请输入会议主题" maxlength="20">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!---->
+      </div>
+    </div>
+
+    <script type='text/javascript' src='../js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../js/sm.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../js/common.js' charset='utf-8'></script>
+    <script type="text/javascript">
+      $(function() {
+        /*设置值*/
+        var roomId;
+        var bookValSession = window.sessionStorage.bookVal;
+        var sendDate;
+        var time = '';
+        if (bookValSession) {
+          var bookVal = JSON.parse(bookValSession);
+          $('#useDate').text(bookVal.useDate);
+          sendDate = bookVal.sendDate;
+          if (bookVal.conference) {
+            $('#conference').text(bookVal.conference);
+            roomId = bookVal.roomId;
+          }
+          if (bookVal.datesShow) {
+            $('#time').text(bookVal.datesShow.trim());
+            dates = bookVal.dates.trim();
+          }
+        }
+        var personIds;
+        var personSession = window.sessionStorage.person;
+        if (personSession) {
+          var person = JSON.parse(personSession);
+          personIds = person.personIds;
+          $('#perLink').text(person.personName);
+        }
+        var meetTitle = window.sessionStorage.meetTitle;
+        if (meetTitle) {
+          $('#meetTitle').val(meetTitle);
+        }
+        /*保存主题的值*/
+        $(document).on('blur', '#meetTitle', function() {
+          window.sessionStorage.setItem('meetTitle', $(this).val().trim())
+        })
+        $('#bookBtn').on('click', function() {
+          if (!personIds) {
+            $.alert('请选择与会人员！')
+            return;
+          }
+          if (!($('#meetTitle').val().trim())) {
+            $.alert('请填写会议主题！');
+            $('#meetTitle').focus();
+            return;
+          }
+          var bookSend = {
+            'id': roomId,
+            'mobile': mobile,
+            'title': $('#meetTitle').val().trim(),
+            'useDate': sendDate,
+            'dates': dates,
+            'personIds': personIds
+          }
+          /*发送预定的请求*/
+          $.ajax({
+            type: 'POST',
+            url: api + '/meeting/add',
+            data: bookSend,
+            dataType: 'json',
+            beforeSend: function(XMLHttpRequest) {
+              $.showIndicator();
+            },
+            success: function(data) {
+              $.hideIndicator();
+              if (data.code == 1000) {
+                location.href = 'my_book.html';
+              } else {
+                $.alert(data.msg, function() {
+                  location.href = 'book_room.html';
+                });
+              }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+              $.hideIndicator();
+              $.alert('不好意思，出错了~~');
+            }
+          });
+        });
+      })
+    </script>
+  </body>
+
+</html>

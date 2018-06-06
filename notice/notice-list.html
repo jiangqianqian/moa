@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>公司通知</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="../css/sm.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="css/notice.css">
+</head>
+
+<body>
+  <div class="page">
+    <header class="bar">
+      <input type="hidden" id="type" name="type" value="NOTICE" />
+      <div class="searchbar">
+        <a class="searchbar-cancel" id="cancel">取消</a>
+        <div class="search-input">
+          <label class="icon icon-search" for="search"></label>
+          <input type="search" id='searchBox' placeholder='请输入公告关键字...' />
+        </div>
+      </div>
+    </header>
+    <div class="content infinite-scroll infinite-scroll-bottom" data-distance="100">
+      <div class="list-block media-list">
+        <ul class="list-container">
+        </ul>
+      </div>
+      <!-- 加载提示符 -->
+      <div class="infinite-scroll-preloader">
+          <div class="preloader"></div>
+      </div>
+      <div class="no-data none " id="noData">暂无数据</div>
+    </div>
+  </div>
+  <script type='text/javascript' src='../js/zepto.js'></script>
+  <script type='text/javascript' src='../js/sm.js'></script>
+  <script type='text/javascript' src='../js/common.js'></script>
+  <script type='text/javascript' src='js/list.js'></script>
+</body>
+
+</html>

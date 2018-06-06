@@ -1,0 +1,111 @@
+/*公用样式*/
+
+
+/*搜索*/
+
+html,
+body {
+    font-family: arial, "Hiragino Sans GB", "Hiragino Sans GB W3", 'Helvetica Neue', Helvetica, 'microsoft yahei';
+}
+
+.wrap-break {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.searchbar-flex {
+    display: -moz-box;
+    /* Firefox */
+    display: -webkit-box;
+    /* Safari and Chrome */
+    display: box;
+    width: 100%;
+}
+
+.bar,
+.bar .searchbar {
+    height: auto;
+}
+
+.search-input {
+    -moz-box-flex: 8.0;
+    /* Firefox */
+    -webkit-box-flex: 8.0;
+    /* Safari and Chrome */
+    box-flex: 8.0;
+}
+
+.search-btn {
+    -moz-box-flex: 2.0;
+    /* Firefox */
+    -webkit-box-flex: 2.0;
+    /* Safari and Chrome */
+    box-flex: 2.0;
+}
+
+.search-input input {
+    height: 1.8rem!important;
+}
+
+.search-btn .button {
+    top: 0;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    background: #0894ec;
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.search-btn .button:active {
+    box-shadow: inset 0 5px 5px #1976D2;
+}
+
+.hairline {
+    display: none;
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    overflow: hidden;
+    top: 50%;
+    right: 0.3rem;
+    margin-top: -0.4rem;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.hairline::before,
+.hairline::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 0.6rem;
+    top: 50%;
+    left: 0.1rem;
+    margin-top: -1px;
+    background: #fff;
+}
+
+.hairline::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.hairline::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.search-input label + input {
+    padding-right: 1.4rem;
+}
+
+.searchbar .searchbar-cancel {
+    height: 1.8rem;
+    line-height: 1.8rem;
+}

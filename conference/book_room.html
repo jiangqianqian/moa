@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>预订会议室</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="stylesheet" href="../css/sm.css">
+  <link rel="stylesheet" href="../css/common.cnss">
+  <link rel="stylesheet" href="css/book-room.css">
+  <style>
+  .picker-calendar-day.picker-calendar-day-selected span{
+      background: #1a66b3;
+}
+    .icon-prev {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAABACAYAAACtK6/LAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAC4jAAAuIwF4pT92AAAE2ElEQVRo3uXbX4hVRRzA8e/+1c1lWXTTmiRZUBRRKUnK2IceLEqcWkhQTKJ/jFGYllhruuuuW9kfS4v+wATRQ/aQaNAskZERW0aKUWlQ9BBBNBQVIlpRyG4PM7iT3TN33fvn3HPvgX3Z+7sz8/mdP/ec+c2powY3oUwXMFCX9kDKjL4GGABuAKgJvFDmKo9eHv6/qvFCmSs9ekUua1XihTILPbo7ZqwqvFBmPtAP3ArU54uvCrxQZi7QB6yOoP8AplQNXigzG+gFbgMaEsJ+A3YBw8Cn4QeNaQMmiO4EtgG3RwwngWeBF6yWp/114D9bpvBCmcuBrcAdQHNC2ClgN7DHankq1l4m8EKZy4BHgXsi6NPA88BzVsuT42m3ovFCmUuALYACJieEnQFeAp6xWv5+Ie1XJF4oMx3oAe4FWhLC/gReAZ6yWv46kX4qCi+U6QA2A/dz3s9SsP0FaOBJq+XPhfRXEXihzFRgE/AA0JoQ9jfwqkf/VIx+U8ULZdqBjcCDQFtC2D/Aa8ATVssfi9l/KnihTBuwAXgIaE8IOwu8DjxutfyhFOMoK14o0wqsxx3i0yLovcAOq+X3pRxPWfBCmYtwF7HNwMUJYSPAm8Cg1fK7coyrpHihTAuwDvezNSOC3gf0Wy2/LQe6pHihzCTcjUkPIBLCRoEDHv11OdElwQtlmoG7cPffMyPod4DtVsuv0kAXFS+UacI9bGwFZkVCh4ABq+WxNNFFwQtlGoG1uImEzkjoQdyePpI2uGC8UKYBWIObSJgTCT3k0YfThhaMF8rUA6twe3peJHQY6LVaDqcNLBgvlKkDVnr0gkjoYdyePpQ2rGC8R9+CmwZeFAk94tEH0wYVBS+UWeHRiyPfP4a7eg+lDSkKXihzI7ADWBL53pfAdsBYLUfTRhSMF8osw+3payPxJ3zMgSyjz+GFMtcBg0BXJO4bj95ntRxJe9DF2uoZX+Fi1P9V1XYOLpS5Hrd3l0biT+BqYW9n7bD3RYvjOfFB0HIPzHfB6wOGspKEXPj/FfWslu8CVwM3A18ktHUF7snsqE9WJrfo+e5vcrpxp8PCSOhnuJuc99MGRSz5D/uEL9bjat79wPxI6Cc+CR+mjS0a/rwkrMad73MjoR8BfVbLj9NGFw0fNNSAq4n3ArMjoR/gpqlSf6QtGj5osBFXI99GfDLjPdzpcLRq8EHDTcCduDJyvmmsfqvl51WDDzpoxtXQt5B/ArPPanl8vG1XPD7oaDJjU9eXRpKwH/dIXPKp67Lhgw5bcDX2HmB6QtgI8JZPQsmKFmXHBx1PYaxc1RFJwl7gsVKUq1LDBwNoxdXgNwFTE8LOAm/ganZFK1Smjg8G0oaryW+kTCXqisEHA2rH1eg3UOLFCRWHDwY2DXcqrCf/spSdVktbNfhggB3Aw8B95F+QtNNq+UvV4IOBzgAeIf9StJeBp8ezFC0z+GDAwidhHTApIewM8CKwK7YIMXP4YOAzcc8NdxNffroH2J1r+Wlm8QFgFmMLj5sSwnIuPM48PoB04iZU1nJhS86zjw+SMAc3obKGCbxskGl8kIR5uCNhFbXymkmOJCzwSVg5HltV4YMkLMLNNHdTK6+W5UjCYp8EWXP4IAlLcIWXm2oOHyRhKW7hxbKawwdJ6AIG/wVfiZrjH3Lt/gAAAABJRU5ErkJggg==");
+}
+    .icon-next {
+  background-image: url("data:image/png;base64,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");
+}
+  </style>
+</head>
+
+<body>
+  <div class="page book-room">
+    <!---->
+    <header class="bar bar-nav">
+      <!--buttons-fixed 锁定-->
+      <div id="useDate" class="js-tabs buttons-tab" style="font-size: 0.9rem;" style="display:none;">
+        <a href="javascript:;" class="tab-links active button">周一(4.16)</a>
+        <a href="javascript:;" class="tab-links button">周一(4.16)</a>
+        <a href="javascript:;" class="tab-links button">周一(4.16)</a>
+      </div>
+      <div class="list-block" style="margin:1rem 0;background-color:#fff;">
+        <div class="item-input item-link">
+          <input class="item-inner" id="meetingDate" type="text" placeholder="请选择会议日期" readonly="">
+        </div>
+      </div>
+      <div class="js-tabs radio-list buttons-row">
+        <a href="javascript:;" class="tab-links active">
+          <span><em class='storey-num'>6</em>层</span>
+        </a>
+        <a href="javascript:;" class="tab-links">
+          <span><em class='storey-num'>7</em>层</span>
+        </a>
+        <a href="javascript:;" class="tab-links">
+          <span><em class='storey-num'>8</em>层</span>
+        </a>
+        <a href="javascript:;" class="tab-links">
+          <span><em class='storey-num'>9</em>层</span>
+        </a>
+      </div>
+      <div id="tableHead">
+      </div>
+    </header>
+    <nav class="bar bar-tab dn">
+      <a href="meeting_manage.html" class="js-bookbtn external button button-big button-fill">确定</a>
+      <!-- meeting_manage.html -->
+    </nav>
+    <div class="content native-scroll" id="bookRoomContent">
+      <!--预订con-->
+      <!--1-->
+      <!--style="display: none;"-->
+      <div class="tab" id="roomBox">
+        <!-- <table class="m-table">
+                    <tr>
+                        <th>上午</th>
+                        <th>会议室1</th>
+                        <th>会议室2</th>
+                        <th>会议室3</th>
+                    </tr>
+                    <tr id="1">
+                        <td data-start="9" data-end="10">9:00
+                            <p>至</p>10:00</td>
+                        <td data-room="会议室1" rowspan="2" class="m-checked">
+                            会议评审会议评审会议评审会议评审会议评审会议评16
+                        </td>
+                        <td data-room="会议室2">
+                            <div class="checked-item-timeout">过时</div>
+                        </td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="2">
+                        <td data-start="10" data-end="11">10:00
+                            <p>至</p>11:00</td>
+                        <td data-room="会议室1" class="m-checked" style="display: none;"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="3">
+                        <td data-start="11" data-end="12">11:00
+                            <p>至</p>12:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr class="time-tag">
+                        <td>下午</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="4">
+                        <td data-start="14" data-end="15">14:00
+                            <p>至</p>15:00</td>
+                        <td data-room="会议室1" rowspan="2" class="m-checked"><span>技术中心评审技术中心评审</span></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="5">
+                        <td data-start="15" data-end="16">15:00
+                            <p>至</p>16:00</td>
+                        <td data-room="会议室1" style="display: none;"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="6">
+                        <td data-start="16" data-end="17">16:00
+                            <p>至</p>17:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="7">
+                        <td data-start="17" data-end="18">17:00
+                            <p>至</p>18:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="8">
+                        <td data-start="18" data-end="19">18:00
+                            <p>至</p>19:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="9">
+                        <td data-start="19" data-end="20">19:00
+                            <p>至</p>20:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                </table> -->
+      </div>
+    </div>
+  </div>
+  <script type='text/javascript' src='../js/zepto.js'></script>
+  <script type='text/javascript' src='../js/sm.js'></script>
+  <script type='text/javascript' src='../js/template.js'></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type='text/javascript' src='js/book_room.js'></script>
+    <script id="roomBoxTplHead" type="text/html">
+        <table class="m-table">
+            <thead>
+                <tr>
+                    <th>时间</th>
+                    {{each (data.items) as value i}}
+                    <th><span class="icon icon-computer"></span>{{value.name}}({{value.number}})</th>
+                    {{/each}}
+                </tr>
+            </thead>
+        </table>
+    </script>
+    <script id="roomBoxTpl" type="text/html">
+        <table class="m-table">
+            <tbody>
+                <tr id="1">
+                    <td data-start="9" data-end="10">9:00
+                        <p>至</p>10:00</td>
+                    {{each (data.items) as value i}}
+                    <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                    {{/each}}
+                </tr>
+                <tr id="2">
+                    <td data-start="10" data-end="11">10:00
+                        <p>至</p>11:00</td>
+                    {{each (data.items) as value i}}
+                    <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                    {{/each}}
+                    <tr id="3">
+                        <td data-start="11" data-end="12">11:00
+                            <p>至</p>12:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="4">
+                        <td data-start="14" data-end="15">14:00
+                            <p>至</p>15:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="5">
+                        <td data-start="15" data-end="16">15:00
+                            <p>至</p>16:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="6">
+                        <td data-start="16" data-end="17">16:00
+                            <p>至</p>17:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="7">
+                        <td data-start="17" data-end="18">17:00
+                            <p>至</p>18:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="8">
+                        <td data-start="18" data-end="19">18:00
+                            <p>至</p>19:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="9">
+                        <td data-start="19" data-end="20">19:00
+                            <p>至</p>20:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+            </tbody>
+        </table>
+    </script>
+</body>
+
+</html>

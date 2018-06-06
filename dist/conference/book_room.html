@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>预订会议室</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm-6a514404f6.css">
+    <link rel="stylesheet" href="../css/common-800305be51.css">
+    <link rel="stylesheet" href="css/book-room-1124024484.css">
+</head>
+
+<body>
+    <div class="page book-room">
+        <!---->
+        <header class="bar bar-nav">
+            <!--buttons-fixed 锁定-->
+            <div id="useDate" class="js-tabs buttons-tab" style="font-size: 0.9rem;">
+                <a href="javascript:;" class="tab-links active button">周一(4.16)</a>
+                <a href="javascript:;" class="tab-links button">周一(4.16)</a>
+                <a href="javascript:;" class="tab-links button">周一(4.16)</a>
+            </div>
+            <div class="js-tabs radio-list buttons-row">
+                <a href="javascript:;" class="tab-links active">
+                    <span><em class='storey-num'>6</em>层</span>
+                </a>
+                <a href="javascript:;" class="tab-links">
+                    <span><em class='storey-num'>7</em>层</span>
+                </a>
+                <a href="javascript:;" class="tab-links">
+                    <span><em class='storey-num'>8</em>层</span>
+                </a>
+                <a href="javascript:;" class="tab-links">
+                    <span><em class='storey-num'>9</em>层</span>
+                </a>
+            </div>
+            <div id="tableHead">
+            </div>
+        </header>
+        <nav class="bar bar-tab dn">
+            <a href="meeting_manage.html" class="js-bookbtn external button button-big button-fill">确定</a>
+            <!-- meeting_manage.html -->
+        </nav>
+        <div class="content native-scroll" id="bookRoomContent">
+            <!--预订con-->
+            <!--1-->
+            <!--style="display: none;"-->
+            <div class="tab" id="roomBox">
+                <!-- <table class="m-table">
+                    <tr>
+                        <th>上午</th>
+                        <th>会议室1</th>
+                        <th>会议室2</th>
+                        <th>会议室3</th>
+                    </tr>
+                    <tr id="1">
+                        <td data-start="9" data-end="10">9:00
+                            <p>至</p>10:00</td>
+                        <td data-room="会议室1" rowspan="2" class="m-checked">
+                            会议评审会议评审会议评审会议评审会议评审会议评16
+                        </td>
+                        <td data-room="会议室2">
+                            <div class="checked-item-timeout">过时</div>
+                        </td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="2">
+                        <td data-start="10" data-end="11">10:00
+                            <p>至</p>11:00</td>
+                        <td data-room="会议室1" class="m-checked" style="display: none;"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="3">
+                        <td data-start="11" data-end="12">11:00
+                            <p>至</p>12:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr class="time-tag">
+                        <td>下午</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="4">
+                        <td data-start="14" data-end="15">14:00
+                            <p>至</p>15:00</td>
+                        <td data-room="会议室1" rowspan="2" class="m-checked"><span>技术中心评审技术中心评审</span></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="5">
+                        <td data-start="15" data-end="16">15:00
+                            <p>至</p>16:00</td>
+                        <td data-room="会议室1" style="display: none;"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="6">
+                        <td data-start="16" data-end="17">16:00
+                            <p>至</p>17:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="7">
+                        <td data-start="17" data-end="18">17:00
+                            <p>至</p>18:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="8">
+                        <td data-start="18" data-end="19">18:00
+                            <p>至</p>19:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                    <tr id="9">
+                        <td data-start="19" data-end="20">19:00
+                            <p>至</p>20:00</td>
+                        <td data-room="会议室1"></td>
+                        <td data-room="会议室2"></td>
+                        <td data-room="会议室3"></td>
+                    </tr>
+                </table> -->
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='../js/zepto-5e568556e9.js'></script>
+    <script type='text/javascript' src='../js/sm-d9705c9e06.js'></script>
+    <script type='text/javascript' src='../js/template-404a5647dd.js'></script>
+    <script type="text/javascript" src="../js/common-6c085acd60.js"></script>
+    <script type='text/javascript' src='js/book_room-b068974a09.js'></script>
+    <script id="roomBoxTplHead" type="text/html">
+        <table class="m-table">
+            <thead>
+                <tr>
+                    <th>时间</th>
+                    {{each (data.items) as value i}}
+                    <th><span class="icon icon-computer"></span>{{value.name}}({{value.number}})</th>
+                    {{/each}}
+                </tr>
+            </thead>
+        </table>
+    </script>
+    <script id="roomBoxTpl" type="text/html">
+        <table class="m-table">
+            <tbody>
+                <tr id="1">
+                    <td data-start="9" data-end="10">9:00
+                        <p>至</p>10:00</td>
+                    {{each (data.items) as value i}}
+                    <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                    {{/each}}
+                </tr>
+                <tr id="2">
+                    <td data-start="10" data-end="11">10:00
+                        <p>至</p>11:00</td>
+                    {{each (data.items) as value i}}
+                    <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                    {{/each}}
+                    <tr id="3">
+                        <td data-start="11" data-end="12">11:00
+                            <p>至</p>12:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="4">
+                        <td data-start="14" data-end="15">14:00
+                            <p>至</p>15:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="5">
+                        <td data-start="15" data-end="16">15:00
+                            <p>至</p>16:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="6">
+                        <td data-start="16" data-end="17">16:00
+                            <p>至</p>17:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="7">
+                        <td data-start="17" data-end="18">17:00
+                            <p>至</p>18:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="8">
+                        <td data-start="18" data-end="19">18:00
+                            <p>至</p>19:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+                    <tr id="9">
+                        <td data-start="19" data-end="20">19:00
+                            <p>至</p>20:00</td>
+                        {{each (data.items) as value i}}
+                        <td data-room={{value.name}} data-roomid={{value.id}}></td>
+                        {{/each}}
+                    </tr>
+            </tbody>
+        </table>
+    </script>
+</body>
+
+</html>

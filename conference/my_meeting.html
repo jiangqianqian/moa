@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的会议</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../css/sm.css">
+    <link rel="stylesheet" href="../css/common.css">
+</head>
+<style type="text/css">
+.c-imp {
+    color: #ff6606;
+}
+
+.tip {
+    margin-top: 50%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+p.count {
+    height: 2rem;
+    background: #fff;
+    line-height: 1rem;
+    padding: 0.5rem 1.25rem;
+    margin: 0
+}
+
+.count .c-imp {
+    font-weight: bold;
+}
+
+.db {
+    display: block;
+}
+
+.dn {
+    display: none;
+}
+
+.list-block {
+    margin-top: 0;
+}
+
+.yuding-list .card {
+    box-shadow: none;
+    border: 1px solid #dfdfdf;
+}
+</style>
+
+<body>
+    <div class="page">
+        <!---->
+        <div class="content native-scroll">
+            <p class="js-count count dn">你有<span id="meetCount" class="c-imp"></span>个会议待开</p>
+            <div class="list-block cards-list yuding-list">
+                <ul id="meetingUl">
+                    <!-- <li class="card">
+              <div class="card-content">
+                <div class="card-content-inner">
+                  <p class="m-title">会议主题：【MOA评审】</p>
+                  <p class="date">会议开始时间：<span class="c-imp">4月12日 10:00</span></p>
+                  <p class="duration">会议时长：2小时</p>
+                  <p class="site">会议地点：<span>七楼一号会议室</span></p>
+
+                </div>
+              </div>
+            </li>
+            <li class="card">
+              <div class="card-content">
+                <div class="card-content-inner">
+                  <p class="m-title">会议主题：【MOA评审】</p>
+                  <p class="date">会议开始时间：<span class="c-imp">4月12日 10:00</span></p>
+                  <p class="duration">会议时长：2小时</p>
+                  <p class="site">会议地点：<span>七楼一号会议室</span></p>
+                </div>
+              </div>
+            </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='../js/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../js/sm.js' charset='utf-8'></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
+    <script id="meetingUlTpl" type="text/html">
+        {{each items as value i}}
+        <li class="card">
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <p>会议主题：【{{value.title}}】</p>
+                    <p class="date">会议开始时间：<span class="c-imp">{{value.date}} {{value.start}}:00</span></p>
+                    <p>会议时长：{{value.time}}小时</p>
+                    <p class="site">会议地点：<span>{{value.storey}}楼{{value.conferenceName}}</span></p>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+    $(function() {
+        $.ajax({
+            type: 'POST',
+            url: api + '/meeting/myMeeting',
+            data: {
+                'mobile': mobile
+            },
+            dataType: 'json',
+            beforeSend: function(XMLHttpRequest) {
+                $.showIndicator();
+            },
+            success: function(data) {
+                $.hideIndicator();
+                if (data.code == 1000) {
+                    var dataItem = data.data;
+                    $('#meetingUl').html('');
+                    var len = (dataItem.items).length;
+                    $('#meetCount').text(len);
+                    $('.js-count').addClass('db').removeClass('dn');
+                    if (len > 0) {
+                        for (var i = 0; i < len; i++) {
+                            dataItem.items[i].start = (startEndStr(dataItem.items[i].dates))[0];
+                            dataItem.items[i].end = (startEndStr(dataItem.items[i].dates))[1];
+                            dataItem.items[i].time = (startEndStr(dataItem.items[i].dates))[2]
+                        }
+                        var html = template('meetingUlTpl', dataItem);
+                        $('#meetingUl').html(html);
+                    } else {
+                        $('#meetingUl').html('<div class="tip">对不起，没有会议待开！</div>');
+                    }
+                } else {
+                    $.alert(data.msg);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                $.hideIndicator();
+                $.alert('不好意思，出错了~~');
+            }
+        });
+    })
+    </script>
+</body>
+
+</html>
